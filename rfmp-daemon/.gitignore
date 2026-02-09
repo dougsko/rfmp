@@ -2,3 +2,4 @@ venv/
 config.yaml
 ._*
 __pycache__
+rfmpd.egg-info
