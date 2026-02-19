@@ -1,0 +1,19 @@
+[Unit]
+Description=RFMP Daemon
+After=sound.target network.target direwolf.service
+#Conflicts=js8call.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/orangepi/rfmp/rfmp-daemon
+Environment="PATH=/home/orangepi/rfmp/rfmp-daemon/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/home/orangepi/rfmp/rfmp-daemon/venv/bin/python -m rfmpd.main -c /home/orangepi/rfmp/rfmpd-daemon/config.yaml
+Restart=on-failure
+RestartSec=2
+
+# Clean LED shutdown
+#ExecStopPost=/usr/local/bin/led-off.sh 27
+
+[Install]
+WantedBy=multi-user.target
+

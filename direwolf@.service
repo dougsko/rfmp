@@ -1,0 +1,17 @@
+[Unit]
+Description=Direwolf Packet TNC (%i)
+After=sound.target network.target
+#Conflicts=js8call.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/direwolf-wrapper.sh %i /etc/direwolf/direwolf-%i.conf
+Restart=on-failure
+RestartSec=2
+
+# Clean LED shutdown
+#ExecStopPost=/usr/local/bin/led-off.sh 27
+
+[Install]
+WantedBy=multi-user.target
+
