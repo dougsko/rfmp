@@ -23,9 +23,13 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# copy code (exclude git metadata)
-mkdir -p "$TARGET_DIR"
-rsync -a --delete --exclude '.git' --exclude '__pycache__' "$REPO_DIR/" "$TARGET_DIR/"
+# copy code (exclude git metadata) only if repo and target differ
+if [ "$REPO_DIR" != "$TARGET_DIR" ]; then
+  mkdir -p "$TARGET_DIR"
+  rsync -a --delete --exclude '.git' --exclude '__pycache__' "$REPO_DIR/" "$TARGET_DIR/"
+else
+  echo "Repository is already in target directory; skipping copy/creation."
+fi
 
 # ensure the target user exists (best-effort)
 if ! id -u "$TARGET_USER" >/dev/null 2>&1; then
