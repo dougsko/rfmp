@@ -4,7 +4,7 @@ After=sound.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/direwolf-wrapper.sh %i /etc/direwolf/direwolf-%i.conf
+ExecStart=$HOME/rfmp/direwolf-wrapper.sh %i $HOME/rfmp/direwolf/direwolf-%i.conf
 Restart=on-failure
 RestartSec=2
 

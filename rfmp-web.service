@@ -5,9 +5,9 @@ After=sound.target network.target direwolf.service
 
 [Service]
 Type=simple
-WorkingDirectory=/home/orangepi/rfmp/rfmp-daemon
-Environment="PATH=/home/orangepi/rfmp/rfmp-daemon/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-ExecStart=/home/orangepi/rfmp/rfmp-web/start.sh
+WorkingDirectory=$HOME/rfmp/rfmp-web
+Environment="PATH=$HOME/rfmp/rfmp-web/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=$HOME/rfmp/rfmp-web/start.sh
 Restart=on-failure
 RestartSec=2
 
