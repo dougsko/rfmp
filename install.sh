@@ -81,13 +81,13 @@ udevadm control --reload-rules || true
 udevadm trigger || true
 systemctl daemon-reload
 
-echo "Enabling and starting services: rfmp-daemon, rfmp-web"
-systemctl enable --now rfmp-daemon.service || true
-systemctl enable --now rfmp-web.service || true
+echo "Enabling services (will NOT start them): rfmp-daemon, rfmp-web"
+systemctl enable rfmp-daemon.service || true
+systemctl enable rfmp-web.service || true
 
 echo
 echo "If you want to enable Direwolf instances (digirig,qmx,digilite), run:"
-echo "  sudo systemctl enable --now direwolf@digirig.service direwolf@qmx.service direwolf@digilite.service"
+echo "  sudo systemctl enable direwolf@digirig.service direwolf@qmx.service direwolf@digilite.service"
 
 echo
 echo "Installation complete. Check status with:"
